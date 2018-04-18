@@ -140,7 +140,12 @@
 									<td>{{=it.stats.pools[pool].poolStats.networkDiff}}</td>
 									<td><script>a={{=it.stats.pools[pool].paymentInterval}};var b = a/60;document.write(b)</script>分钟</td>
 									<td>{{=it.stats.pools[pool].minimumPayment}}{{=it.stats.pools[pool].symbol}}</td>
-									<td>1%</td>
+									{{ var total = 0.0; }}
+            								{{ var rewardRecipients = it.stats.pools[pool].rewardRecipients || {}; }}
+            								{{ for (var r in rewardRecipients) { }}
+            									{{ total += rewardRecipients[r]; }}
+            								{{ } }}
+            								<td>{{=total}}%</td>
 									<td>{{=it.stats.pools[pool].poolStats.networkString}}</td>
 								</tr>
 							{{ } }}
