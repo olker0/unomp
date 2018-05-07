@@ -126,7 +126,8 @@
 									<th>支付时间</th>
 									<th>最低支付</th>
 									<th>挖矿费用</th>
-									<th>全网算力</th>									
+									<th>全网算力</th>
+									<th>最近出块</th>
 								</tr>
 							</thead>
 	
@@ -147,6 +148,7 @@
             								{{ } }}
             								<td>{{=total}}%</td>
 									<td>{{=it.stats.pools[pool].poolStats.networkString}}</td>
+									<td>{{=it.stats.pools[pool].poolStats.mintime}}</td>
 								</tr>
 							{{ } }}
 							</tbody>
