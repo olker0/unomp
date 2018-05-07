@@ -104,6 +104,8 @@
 	}
 }}
 
+{{ function capitalizeFirstLetter(t){return t.charAt(0).toUpperCase()+t.slice(1)} }}
+
 <main>						
 <div class="row">
 	<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
@@ -149,7 +151,7 @@
 						<tbody>
 							{{ for(var pool in it.stats.pools) { }}
 								<tr>
-									<td>{{=it.stats.pools[pool].name}}</td>
+									<td>{{=capitalizeFirstLetter(it.stats.pools[pool].name)}}</td>
 									<td>{{=it.stats.pools[pool].poolStats.networkVersion}}</td>
 									<td>{{=it.stats.pools[pool].poolStats.networkConnections}}</td>
 									<td>{{=it.stats.pools[pool].poolStats.networkBlocks}}</td>
@@ -202,7 +204,7 @@
 							<tbody>
 							{{ for(var pool in it.stats.pools) { }}
 								<tr>
-									<td>{{=it.stats.pools[pool].name}}</td>
+									<td>{{=capitalizeFirstLetter(it.stats.pools[pool].name)}}</td>
 									<td>{{=it.stats.pools[pool].algorithm}}</td>
 									<td>{{=Object.keys(it.stats.pools[pool].workers).length}}</td>
 									<td>{{=it.stats.pools[pool].poolStats.validShares}}</td>
