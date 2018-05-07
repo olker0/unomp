@@ -630,6 +630,27 @@ function SetupForPool(logger, poolOptions, setupFinished){
 				});
 				}
              );
+       daemon.cmd('getblocktemplate', params,
+			function (result) {
+				if (!result || result.error || result[0].error || !result[0].response) {
+					logger.error(logSystem, logComponent, 'Error with RPC call mintime '+JSON.stringify(result[0].error));
+					return;
+				}
+				
+				if (result[0].response.connections !== null) {
+					finalRedisCommands.push(['hset', coin + ':stats', 'mintime', result[0].response.mintime]);
+				}
+				if (finalRedisCommands.length <= 0)
+					return;
+
+				redisClient.multi(finalRedisCommands).exec(function(error, results){
+					if (error){
+						logger.error(logSystem, logComponent, 'Error with redis during call to cacheNetworkStats() ' + JSON.stringify(error));
+						return;
+					}
+				});
+				}
+             );					 
             }
         );
     }	

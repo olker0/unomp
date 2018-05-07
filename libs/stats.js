@@ -281,7 +281,8 @@ this.getCoins = function(cback){
                             symbol: poolConfigs[coinName].coin.symbol.toUpperCase(),
                             algorithm: poolConfigs[coinName].coin.algorithm,
 							paymentInterval:poolConfigs[coinName].paymentProcessing.paymentInterval,
-							minimumPayment:poolConfigs[coinName].paymentProcessing.minimumPayment,							
+							minimumPayment:poolConfigs[coinName].paymentProcessing.minimumPayment,
+							rewardRecipients: poolConfigs[coinName].rewardRecipients,
                             hashrates: replies[i + 1],
                             poolStats: {
                                 validShares: replies[i + 2] ? (replies[i + 2].validShares || 0) : 0,
@@ -295,7 +296,8 @@ this.getCoins = function(cback){
 								networkString: _this.getReadableHashRateString(replies[i + 2] ? (replies[i + 2].networkhashps || 0) : 0),
 								networkDiff: replies[i + 2] ? (replies[i + 2].networkDiff || 0) : 0,
 								networkConnections: replies[i + 2] ? (replies[i + 2].networkConnections || 0) : 0,
-                                networkVersion: replies[i + 2] ? (replies[i + 2].networkVersion || 0) : 0,								
+                                networkVersion: replies[i + 2] ? (replies[i + 2].networkVersion || 0) : 0,		
+								mintime: replies[i + 2] ? (replies[i + 2].mintime || 0) : 0,
                             },
                             blocks: {
                                 pending: replies[i + 3],
